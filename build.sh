@@ -1,1 +1,1 @@
-gcc -o rf rf.c -lwiringpi
+gcc -o rf rf.c -L/usr/local/lib -lwiringPi -Wall
