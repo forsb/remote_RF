@@ -38,20 +38,34 @@ int readBit()
     gettimeofday(&tv, NULL); 
     time = (tv.tv_sec * 1000000) + tv.tv_usec;
     
-    switch(oldtime - time){
-        
+    
+    double t = time - oldtime;
     // x = 1 -> '1'
-        case T-M ... T+M: return 1;
-    // x = 5 -> '0'
-    
-    // x = 10 -> 'SYNC'
-    
-    // x = 40 -> 'PAUSE'
-    
-        default return -1;
-    
+    if (T-M < t && t < T+M)
+    {
+        return 1;
     }
-    return 1;
+    // x = 5 -> '0'
+    else if (5*T-M < t && t < 5T+M)
+    {
+        return 0;
+    }
+    // x = 10 -> 'SYNC'
+    else if (10*T-M < t && t < 10T+M)
+    {
+        return 's';
+    }
+    // x = 40 -> 'PAUSE'
+    else if (40*T-M < t && t < 40T+M)
+    {
+        return 'p';
+    }
+    // not anything of above
+    else
+    {
+        return -1;
+    }
+
 }
 
 int readVal()
