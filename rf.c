@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 #include <wiringPi.h>
 
 #ifndef RPIN 
@@ -12,7 +13,7 @@
 
 #define T 250
 
-#define 
+#define MARGIN 50
 
 int readPacket()
 {
