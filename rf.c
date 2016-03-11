@@ -41,12 +41,12 @@ int readBit()
     
     double t = time - oldtime;
     // x = 1 -> '1'
-    if (T-M < t && t < T+M)
+    if ((T-M) < t && t < (T+M))
     {
         return 1;
     }
     // x = 5 -> '0'
-    else if (5*T-M < t && t < 5T+M)
+    else if ((5*T-M) < t && t < (5T+M))
     {
         return 0;
     }
