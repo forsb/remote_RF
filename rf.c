@@ -15,6 +15,22 @@
 
 #define M 50
 
+int readPacket();
+int readBit();
+int readVal();
+
+int main() 
+{
+    // Setup wiringPi. Wpi-mode (type 'gpio readall' to see pin numbering)
+    wiringPiSetup();
+    pinMode(RPIN, INPUT);
+    pinMode(WPIN, OUTPUT);
+    
+    printf("Hello %s!", "world");
+    
+    return 0;
+}
+
 int readPacket()
 {
     
@@ -71,16 +87,4 @@ int readVal()
     int ret = 0;
     
     return ret;
-}
-
-int main() 
-{
-    // Setup wiringPi. Wpi-mode (type 'gpio readall' to see pin numbering)
-    wiringPiSetup();
-    pinMode(RPIN, INPUT);
-    pinMode(WPIN, OUTPUT);
-    
-    printf("Hello %s!", "world");
-    
-    return 0;
 }
