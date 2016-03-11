@@ -34,7 +34,43 @@ int main()
 int readPacket()
 {
     
-    return 1;
+    /*
+    S HHHH HHHH HHHH HHHH HHHH HHHH HHGO CCEE P
+
+    S = Sync bit.
+    H = The first 26 bits are transmitter unique codes, and it is this code that the reciever "learns" to recognize.
+    G = Group code. Set to 0 for on, 1 for off.
+    O = On/Off bit. Set to 0 for on, 1 for off.
+    C = Channel bits. Proove/Anslut = 00, Nexa = 11.
+    E = Unit bits. Device to be turned on or off.
+    Proove/Anslut Unit #1 = 00, #2 = 01, #3 = 10.
+    Nexa Unit #1 = 11, #2 = 10, #3 = 01.
+    P = Pause bit.
+    */
+    int i, prevbit, bit, ret;
+    
+    while (readBit() != 's');
+    
+    for (i = 0; i < 64; i++)
+    {
+        bit = readBit();
+        
+        if (i % 2 == 0) //First bit of 2
+        {
+            prevbit = bit;
+            continue;
+        }
+        
+        if (prevbit ^ bit == 0) //Bit-errors
+        {
+            return 0;
+        }
+        
+        ret = ret << 1 | prevbit;
+        
+    }
+    
+    return ret;
 }
 
 int readBit()
