@@ -19,6 +19,10 @@ int readPacket();
 int readBit();
 int readVal();
 
+int sendPacket(int packet);
+int sendBit(int bit);
+int sendVal(int val);
+
 int main() 
 {
     // Setup wiringPi. Wpi-mode (type 'gpio readall' to see pin numbering)
@@ -139,4 +143,19 @@ int readVal()
     ret = digitalRead(RPIN);
     
     return ret;
+}
+
+int sendPacket(int packet)
+{
+    return 1;
+}
+
+int sendBit(int bit)
+{
+    return 1;
+}
+
+int sendVal(int val)
+{
+    return 1;
 }
