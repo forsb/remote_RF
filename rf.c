@@ -26,7 +26,21 @@ int main()
     pinMode(RPIN, INPUT);
     pinMode(WPIN, OUTPUT);
     
-    printf("Hello %s!", "world");
+    int ret, code, group, on, channel, unit;
+    
+    while(1)
+    {        
+        ret = readPacket();
+        
+        code = (ret & 0xFFFFFFC0) >> 6;
+        group = (ret & 0x00000020) >> 5;
+        on = (ret & 0x00000010) >> 4;
+        channel = (ret & 0x0000000C) >> 2;
+        unit = ret & 0x00000003;
+        
+        printf("packet received: \n");
+        printf("code 0x%x, group %d, on %d, channel %d, unit %d \n\n", code, group, on, channel, unit);
+    }
     
     return 0;
 }
@@ -61,7 +75,7 @@ int readPacket()
             continue;
         }
         
-        if (prevbit ^ bit == 0) //Bit-errors
+        if ((prevbit ^ bit) == 0) //Bit-errors
         {
             return 0;
         }
@@ -120,7 +134,9 @@ int readBit()
 
 int readVal()
 {
-    int ret = 0;
+    int ret;
+    
+    ret = digitalRead(RPIN);
     
     return ret;
 }
