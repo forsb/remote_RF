@@ -11,6 +11,15 @@
 #define WPIN 2
 #endif
 
+/*
+
+gnd     gnd
+18      
+23      
+21      vcc
+
+*/
+
 #define T 250
 
 #define M 50
