@@ -14,8 +14,8 @@
 /*
 
 gnd     gnd
-18      
-23      
+18      digital out
+23      linear out
 21      vcc
 
 */
