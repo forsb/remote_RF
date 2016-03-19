@@ -3,22 +3,29 @@
 #include <stdlib.h>
 #include <wiringPi.h>
 
+/*
+RECEIVER
+
+wpi     phys        pins
+-----------------------
+gnd     gnd         gnd
+5       18          digital out
+14      23          linear out
+13      21          vcc
+
+*/
+
 #ifndef RPIN 
-#define RPIN 1
+#define RPIN 5
 #endif
 
 #ifndef WPIN 
 #define WPIN 2
 #endif
 
-/*
-
-gnd     gnd
-18      digital out
-23      linear out
-21      vcc
-
-*/
+#ifndef VCC
+#define VCC 13
+#endif
 
 #define T 250
 
@@ -38,6 +45,9 @@ int main()
     wiringPiSetup();
     pinMode(RPIN, INPUT);
     pinMode(WPIN, OUTPUT);
+    pinMode(VCC, OUTPUT);
+    
+    deigitalWrite(VCC, HIGH);
     
     int ret, code, group, on, channel, unit;
     
