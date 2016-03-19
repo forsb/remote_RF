@@ -47,7 +47,7 @@ int main()
     pinMode(WPIN, OUTPUT);
     pinMode(VCC, OUTPUT);
     
-    deigitalWrite(VCC, HIGH);
+    digitalWrite(VCC, HIGH);
     
     int ret, code, group, on, channel, unit;
     
