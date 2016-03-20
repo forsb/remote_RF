@@ -19,8 +19,8 @@ TRANSMITTER
 wpi     phys        pins
 -----------------------
 gnd     gnd         gnd
-5       18          digital in
-14      23          vcc
+5       18          vcc
+14      23          data
 13      21          
 
 */
@@ -68,15 +68,15 @@ ONE
 */
 
 #ifndef RPIN 
-#define RPIN 5
+#define RPIN 1
 #endif
 
 #ifndef WPIN 
-#define WPIN 2
+#define WPIN 14
 #endif
 
 #ifndef VCC
-#define VCC 14
+#define VCC 5
 #endif
 
 #define PRE 275
@@ -103,7 +103,15 @@ int main()
     
     digitalWrite(VCC, HIGH);
     
-    int ret, host, group, on, device;
+    while(1)
+    {
+        int paket = createPacket(1337, 0, 0, 23);
+        sendPacket(paket);
+        delay(2000);
+    }
+    
+    
+    /*int ret, host, group, on, device;
     
     while(1)
     {        
@@ -116,7 +124,7 @@ int main()
         
         printf("host:group:on:device %d:%d:%d:%d\n", host, group, on, device);
             
-    }
+    }*/
     
     return 0;
 }
