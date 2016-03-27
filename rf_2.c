@@ -88,6 +88,8 @@ int sendVal(int val);
 
 int main() 
 {
+    printf("high1: %d\n", HIGH);
+
     // Setup wiringPi. Wpi-mode (type 'gpio readall' to see pin numbering)
     wiringPiSetup();
     pinMode(RPIN, INPUT);
@@ -95,6 +97,8 @@ int main()
     pinMode(VCC, OUTPUT);
     
     digitalWrite(VCC, HIGH);
+
+    printf("high2: %d\n", HIGH);
     
     while(1)
     {
