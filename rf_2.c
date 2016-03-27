@@ -102,7 +102,7 @@ int main()
     
     while(1)
     {
-        int paket = createPacket(1337, 0, 0, 23);
+        int paket = createPacket(53914614, 0, 1, 14);
         sendPacket(paket);
         delay(2000);
     }
