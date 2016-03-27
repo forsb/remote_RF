@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <wiringPi.h>
 
+#define RPIN 14
+#define WPIN 2
+#define VCC 0
+
 /*
 RECEIVER
 
@@ -18,10 +22,9 @@ TRANSMITTER
 
 wpi     phys        pins
 -----------------------
-gnd     gnd         gnd
-5       18          vcc
-14      23          data
-13      21          
+gnd     gnd (9)     gnd
+0       11          vcc
+2       13          data     
 
 */
 
@@ -67,17 +70,7 @@ ONE
 
 */
 
-#ifndef RPIN 
-#define RPIN 1
-#endif
 
-#ifndef WPIN 
-#define WPIN 14
-#endif
-
-#ifndef VCC
-#define VCC 5
-#endif
 
 #define PRE 275
 #define SYNC 2675
